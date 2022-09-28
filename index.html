@@ -19,28 +19,27 @@
       <h1>Add a book</h1>
       <button id="close">X</button>
     </div>
-
     <fieldset>
       <ul>
         <li> 
-          <input type="text" id="title" placeholder="Title" required>
+          <input type="text" id="title" placeholder="Title" name="Title" required>
         </li>
   
         <li>
-          <input type="text" id="author" placeholder="Author" required>
+          <input type="text" id="author" placeholder="Author" name="Author" required>
         </li>
   
         <li> 
-          <input type="number" id="pages" placeholder="Pages" required>
+          <input type="number" id="pages" placeholder="Pages" name="Pages" required>
         </li>
-  
+
         <li>
-          <input type="checkbox" id="read" required>
-          <label for="read">Read</label>
+          <input type="checkbox" name="isRead" id="isRead">
+          <label for="isRead">is read</label>
         </li>
       </ul>
     </fieldset>
-    <button type="submit" class="add">Add</button>
+    <button class="add" type="button" onclick="addBook()">Add</button>
   </form>
   <main>
   </main>
