@@ -11,88 +11,38 @@
 <body>
   <header>
     <h1>My Library</h1>
-    <button onclick="formModal()">+ Add book</button>
+    <button id="showModal">+ Add book</button>
   </header>
+
+  <form id="modal">
+    <div>
+      <h1>Add a book</h1>
+      <button id="close">X</button>
+    </div>
+
+    <fieldset>
+      <ul>
+        <li> 
+          <input type="text" id="title" placeholder="Title" required>
+        </li>
+  
+        <li>
+          <input type="text" id="author" placeholder="Author" required>
+        </li>
+  
+        <li> 
+          <input type="number" id="pages" placeholder="Pages" required>
+        </li>
+  
+        <li>
+          <input type="checkbox" id="read" required>
+          <label for="read">Read</label>
+        </li>
+      </ul>
+    </fieldset>
+    <button type="submit" class="add">Add</button>
+  </form>
   <main>
-    <div class="Items">
-      <p>Name</p>
-      <p>Author</p>
-      <p>Page</p>
-      <button>READ</button>
-      <button>DELETE</button>
-    </div>
-
-    <div class="Items">
-      <p>Name</p>
-      <p>Author</p>
-      <p>Page</p>
-      <button>READ</button>
-      <button>DELETE</button>
-    </div>
-
-    <div class="Items">
-      <p>Name</p>
-      <p>Author</p>
-      <p>Page</p>
-      <button>READ</button>
-      <button>DELETE</button>
-    </div>
-
-    <div class="Items">
-      <p>Name</p>
-      <p>Author</p>
-      <p>Page</p>
-      <button>READ</button>
-      <button>DELETE</button>
-    </div>
-
-    <div class="Items">
-      <p>Name</p>
-      <p>Author</p>
-      <p>Page</p>
-      <button>READ</button>
-      <button>DELETE</button>
-    </div>
-
-    <div class="Items">
-      <p>Name</p>
-      <p>Author</p>
-      <p>Page</p>
-      <button>READ</button>
-      <button>DELETE</button>
-    </div>
-
-    <div class="Items">
-      <p>Name</p>
-      <p>Author</p>
-      <p>Page</p>
-      <button>READ</button>
-      <button>DELETE</button>
-    </div>
-
-    <div class="Items">
-      <p>Name</p>
-      <p>Author</p>
-      <p>Page</p>
-      <button>READ</button>
-      <button>DELETE</button>
-    </div>
-
-    <div class="Items">
-      <p>Name</p>
-      <p>Author</p>
-      <p>Page</p>
-      <button>READ</button>
-      <button>DELETE</button>
-    </div>
-
-    <div class="Items">
-      <p>Name</p>
-      <p>Author</p>
-      <p>Page</p>
-      <button>READ</button>
-      <button>DELETE</button>
-    </div>
   </main>
 </body>
 </html>
