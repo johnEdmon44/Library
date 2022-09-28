@@ -30,7 +30,13 @@ function addBook() {
     document.querySelector('#pages').value,
     isRead()
   ));
+
+  //close modal and reset input field
   modal.classList.remove('modal');
+  document.querySelector('#title').value = '';
+  document.querySelector('#author').value = '';
+  document.querySelector('#pages').value = '';
+  document.querySelector('#isRead').checked = false;
 }
 
 function isRead() {
