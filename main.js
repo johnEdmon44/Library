@@ -73,5 +73,10 @@ function displayLibrary() {
     outPages.textContent = books.pages;
     readBtn.textContent = books.status;
     removeBtn.textContent = 'Remove';
+
+    removeBtn.classList.add('removeBtn');
+    document.querySelectorAll('.removeBtn').forEach((removeButtons, i) => {
+      removeButtons.setAttribute('data-index', i);
+    })
   });
 }
