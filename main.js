@@ -77,6 +77,11 @@ function displayLibrary() {
     removeBtn.classList.add('removeBtn');
     document.querySelectorAll('.removeBtn').forEach((removeButtons, i) => {
       removeButtons.setAttribute('data-index', i);
-    })
+    });
+
+    removeBtn.addEventListener('click', (e) => {
+      myLibrary.splice('data-index', 1);
+      e.currentTarget.parentNode.remove();
+    });
   });
 }
