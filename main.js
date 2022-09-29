@@ -3,6 +3,7 @@
 const modal = document.querySelector('#modal');
 const showModal = document.querySelector('#showModal');
 const closeModal = document.querySelector('#close');
+const main = document.querySelector('#main');
 
 
 showModal.addEventListener('click', function() {
@@ -37,6 +38,8 @@ function addBook() {
   document.querySelector('#author').value = '';
   document.querySelector('#pages').value = '';
   document.querySelector('#isRead').checked = false;
+  
+  displayLibrary();
 }
 
 function isRead() {
@@ -47,3 +50,28 @@ function isRead() {
   }
 }
 
+function displayLibrary() {
+  main.innerHTML = '';
+  myLibrary.forEach(books => {
+    const outTitle = document.createElement('p');
+    const outAuthor = document.createElement('p');
+    const outPages = document.createElement('p');
+    const div = document.createElement('div');
+    const readBtn = document.createElement('button');
+    const removeBtn = document.createElement('button');
+
+    main.appendChild(div);
+    div.appendChild(outTitle);
+    div.appendChild(outAuthor);
+    div.appendChild(outPages);
+    div.classList.add('Items');
+    div.appendChild(readBtn);
+    div.appendChild(removeBtn);
+    
+    outTitle.textContent = books.title;
+    outAuthor.textContent = books.author;
+    outPages.textContent = books.pages;
+    readBtn.textContent = books.status;
+    removeBtn.textContent = 'Remove';
+  });
+}
