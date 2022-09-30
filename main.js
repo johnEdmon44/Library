@@ -83,5 +83,15 @@ function displayLibrary() {
       myLibrary.splice('data-index', 1);
       e.currentTarget.parentNode.remove();
     });
+
+    readBtn.addEventListener('click', () => {
+      if(books.status === 'read') {
+        books.status = 'not read';
+        readBtn.textContent = books.status;
+      } else {
+        books.status = 'read';
+        readBtn.textContent = books.status;
+      }
+    })
   });
 }
