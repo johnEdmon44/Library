@@ -1,5 +1,6 @@
 "use strict";
 
+
 const modal = document.querySelector('#modal');
 const showModal = document.querySelector('#showModal');
 const closeModal = document.querySelector('#close');
@@ -15,7 +16,8 @@ closeModal.addEventListener('click', function() {
 }); 
 
 
-let myLibrary = [];
+const myLibrary = [];
+
 
 class Book {
   constructor(title, author, pages, status) {
@@ -26,7 +28,8 @@ class Book {
   }
 }
 
-function addBook() {
+
+function addBookToLibrary() {
   myLibrary.push(new Book(
     document.querySelector('#title').value,
     document.querySelector('#author').value,
@@ -41,8 +44,9 @@ function addBook() {
   document.querySelector('#pages').value = '';
   document.querySelector('#isRead').checked = false;
   
-  displayLibrary();
+  updateLibraryUI();
 }
+
 
 function isRead() {
   if(document.querySelector('#isRead').checked == true) {
@@ -52,48 +56,52 @@ function isRead() {
   }
 }
 
-function displayLibrary() {
+
+function updateLibraryUI() {
+  const main = document.querySelector('#main');
+
   main.innerHTML = '';
-  myLibrary.forEach(books => {
-    const outTitle = document.createElement('p');
-    const outAuthor = document.createElement('p');
-    const outPages = document.createElement('p');
+
+  myLibrary.forEach((book, index) => {
     const div = document.createElement('div');
-    const readBtn = document.createElement('button');
-    const removeBtn = document.createElement('button');
-
-    main.appendChild(div);
-    div.appendChild(outTitle);
-    div.appendChild(outAuthor);
-    div.appendChild(outPages);
     div.classList.add('Items');
+    main.appendChild(div);
+
+
+    const outTitle = document.createElement('p');
+    outTitle.textContent = book.title;
+    div.appendChild(outTitle);
+
+
+    const outAuthor = document.createElement('p');
+    outAuthor.textContent = book.author;
+    div.appendChild(outAuthor);
+
+
+    const outPages = document.createElement('p');
+    outPages.textContent = book.pages;
+    div.appendChild(outPages);
+
+
+    const readBtn = document.createElement('button');
+    readBtn.textContent = book.status;
     div.appendChild(readBtn);
-    div.appendChild(removeBtn);
-    
-    outTitle.textContent = books.title;
-    outAuthor.textContent = books.author;
-    outPages.textContent = books.pages;
-    readBtn.textContent = books.status;
+
+
+    const removeBtn = document.createElement('button');
     removeBtn.textContent = 'Remove';
+    div.appendChild(removeBtn);
 
-    removeBtn.classList.add('removeBtn');
-    document.querySelectorAll('.removeBtn').forEach((removeButtons, i) => {
-      removeButtons.setAttribute('data-index', i);
+
+    removeBtn.addEventListener('click', () => {
+      myLibrary.splice(index, 1);
+      updateLibraryUI();
     });
 
-    removeBtn.addEventListener('click', (e) => {
-      myLibrary.splice('data-index', 1);
-      e.currentTarget.parentNode.remove();
-    });
 
     readBtn.addEventListener('click', () => {
-      if(books.status === 'read') {
-        books.status = 'not read';
-        readBtn.textContent = books.status;
-      } else {
-        books.status = 'read';
-        readBtn.textContent = books.status;
-      }
-    })
+      book.status = (book.status === 'read') ? 'not read' : 'read';
+      readBtn.textContent = book.status;
+    });
   });
 }
