@@ -16,7 +16,7 @@ closeModal.addEventListener('click', function() {
 }); 
 
 
-const myLibrary = [];
+let myLibrary = [];
 
 
 class Book {
@@ -46,6 +46,9 @@ function addBookToLibrary() {
   document.querySelector('#isRead').checked = false;
   
   updateLibraryUI();
+
+  
+  localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
 }
 
 
@@ -103,12 +106,22 @@ function updateLibraryUI() {
     removeBtn.addEventListener('click', () => {
       myLibrary.splice(index, 1);
       updateLibraryUI();
+
+      localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
     });
 
 
     readBtn.addEventListener('click', () => {
       book.status = (book.status === 'read') ? 'not read' : 'read';
       readBtn.textContent = book.status;
+
+      localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
     });
   });
+}
+
+
+if (localStorage.getItem('myLibrary')) {
+  myLibrary = JSON.parse(localStorage.getItem('myLibrary'));
+  updateLibraryUI();
 }
