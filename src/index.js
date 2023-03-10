@@ -29,8 +29,8 @@ class Book {
 }
 
 
-function addBookToLibrary(event) {
-  event.preventDefault();
+function addBookToLibrary() {
+
   myLibrary.push(new Book(
     document.querySelector('#title').value,
     document.querySelector('#author').value,
@@ -46,7 +46,6 @@ function addBookToLibrary(event) {
   document.querySelector('#isRead').checked = false;
   
   updateLibraryUI();
-  console.log(myLibrary);
 }
 
 
@@ -57,6 +56,13 @@ function isRead() {
     return 'not read';
   }
 }
+
+
+const addBookBtn = document.querySelector("#addBook");
+addBookBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  addBookToLibrary();
+});
 
 
 function updateLibraryUI() {
