@@ -1,10 +1,10 @@
+import "./style.css"
 "use strict";
 
 
 const modal = document.querySelector('#modal');
 const showModal = document.querySelector('#showModal');
 const closeModal = document.querySelector('#close');
-const main = document.querySelector('#main');
 
 
 showModal.addEventListener('click', function() {
@@ -29,7 +29,8 @@ class Book {
 }
 
 
-function addBookToLibrary() {
+function addBookToLibrary(event) {
+  event.preventDefault();
   myLibrary.push(new Book(
     document.querySelector('#title').value,
     document.querySelector('#author').value,
@@ -45,6 +46,7 @@ function addBookToLibrary() {
   document.querySelector('#isRead').checked = false;
   
   updateLibraryUI();
+  console.log(myLibrary);
 }
 
 
@@ -59,7 +61,6 @@ function isRead() {
 
 function updateLibraryUI() {
   const main = document.querySelector('#main');
-
   main.innerHTML = '';
 
   myLibrary.forEach((book, index) => {
